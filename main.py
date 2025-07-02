@@ -266,10 +266,6 @@ if __name__ == "__main__":
         else:
             area = "NO"
         # 和风天气 Private KEY
-        if datas.get("OPEN_GET_WEATHER"):
-            qweather = datas.get("OPEN_GET_WEATHER")
-        else:
-            qweather = "False"
         msg = ""
         for i in range(len(datas.get("MIMOTION", []))):
             #print(i)
@@ -294,16 +290,7 @@ if __name__ == "__main__":
             print("Telegram推送的tg_bot_token或者tg_user_id未设置!!\n取消推送")
         # 企业微信推送
         # 是否开启企业微信推送false关闭true开启，默认关闭，开启后请填写设置并将上面两个都留空
-        if datas.get("POSITION"):
-            base_url = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?'
-            req_url = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token='
-            corpid = datas.get("CORPID")  # 企业ID， 登陆企业微信，在我的企业-->企业信息里查看
-            corpsecret = datas.get("CORPSECRET")  # 自建应用，每个自建应用里都有单独的secret
-            agentid = datas.get("AGENTID")  # 填写你的应用ID，不加引号，是个整型常数,就是AgentId
-            touser = datas.get("TOUSER")  # 指定接收消息的成员，成员ID列表（多个接收者用‘|’分隔，最多支持1000个）。特殊情况：指定为”@all”，则向该企业应用的全部成员发送
-            toparty = datas.get("TOPARTY")  # 指定接收消息的部门，部门ID列表，多个接收者用‘|’分隔，最多支持100个。当touser为”@all”时忽略本参数
-            totag = datas.get("TOTAG")  # 指定接收消息的标签，标签ID列表，多个接收者用‘|’分隔，最多支持100个。当touser为”@all”时忽略本参数
-            MiMotion(check_item=_check_item).run(msg)
+        
         #推送CONFIG配置
         #MiMotion(check_item=_check_item).run(os.environ["CONFIG"])
     except Exception as e:
